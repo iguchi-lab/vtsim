@@ -436,11 +436,19 @@ airconの名称をキーとした以下の設定により、自動的にエア�
 |in|吸込口側のノード名|ノード名の文字列|setのノード名|
 |out|吹出側のノード名|ノード名の文字列|setのノード名|
 |vol|送風量 [m<sup>3</sup>/s]|数値（リストでの設定も可）|1,000|
-|ac_model|エアコンモデル|なし（顕熱負荷のみを計算）:0 または vt.AC_NONE<br>RACモデル：1 または vt.AC_RAC<br>DUCT_CENTRALモデル：2 または vt.AC_DUCT_C<br>RAC2モデル（将来用）：2 または vt.RAC2<br>電中研モデル（将来用）：3 または vr.CRIEPI|vt.AC_NONE|
+|ac_model|エアコンモデル|なし（顕熱負荷のみを計算）:0 または vt.AC_NONE<br>RACモデル：1 または vt.AC_RAC<br>DUCT_CENTRALモデル：2 または vt.AC_DUCT_C<br>RAC2モデル（将来用）：2 または vt.RAC2<br>電中研モデル（将来用）：3 または vr.CRIEPI|vt.AC_NONE<br>確認中|
 |ac_mode|エアコンの運転モード|自動（暖冷房で設定温度を維持）：0 または vt.AC_AUTO<br>暖房：1 または vt.AC_HEATING<br>冷房：2 または vt.AC_COOLING<br>停止：3 または vt.AC_STOP|なし|
 |pre_tmp|設定温度 [℃]|数値（リストでの設定も可）|
-|pre_x|設定絶対湿度 [kg\kg(DA)]|数値（リストでの設定も可）|※vt.AC_RACかvt.AC_DUCT_Cでは入力が必須ですが、現状では無視されます。
-
+|pre_x|設定絶対湿度 [kg\kg(DA)]|数値（リストでの設定も可）|なし<br>※vt.AC_RACかvt.AC_DUCT_Cでは入力が必須ですが、現状では無視されます。|
+|q_rtd_C|定格冷房能力 [W]|数値（リスト不可）|なし<br>vt.AC_RACでのみ必須|
+|q_max_C|最大冷房能力 [W]|数値（リスト不可）|なし<br>vt.AC_RACでのみ必須|
+|e_rtd_C|定格冷房エネルギー消費効率 [-]|数値（リスト不可）|なし<br>vt.AC_RACでのみ必須|
+|q_rtd_H|定格暖房能力 [W]|数値（リスト不可）|なし<br>vt.AC_RACでのみ必須|
+|q_max_H|最大暖房能力 [W]|数値（リスト不可）|なし<br>vt.AC_RACでのみ必須|
+|e_rtd_H|定格暖房エネルギー消費効率 [-]|数値（リスト不可）|なし<br>vt.AC_RACでのみ必須|
+|dualcompressor|デュアルコンプレッサーあり／なし|bool型 0: False、1: True|なし<br>vt.AC_RACでのみ必須|
+|To|外気温度 [℃]|数値（リストでの設定も可）|なし<br>vt.AC_RACとvt.DUCT_Cで必須|
+|ho|外気相対湿度 [%]|数値（リストでの設定も可）|なし<br>vt.AC_RACとvt.DUCT_Cで必須|
 
 ### heater
 heaterの名称をキーとした以下の設定により、自動的にヒーターを設定することが可能です。ヒーターのノードが設定され、setで指定されたノードと接続されます。
