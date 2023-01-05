@@ -239,12 +239,9 @@ public:
             else                        dt = LU(a, b, t_idc.size());
 
             for(unsigned int i = 0; i < t_idc.size(); i++)   t0[t_idc[i]] += dt[i];                                     //温度の更新
-            
+
             for(unsigned int i = 0; i < i_tn_ac.size(); i++){
                 double  pre_t = tn[i_tn_ac[i]].pre_tmp[ts], t_in = t0[tn[i_tn_ac[i]].i1], t_out = t0[tn[i_tn_ac[i]].i2];
-                double  x_in  = sn[tn[i_tn_ac[i]].i1].x[ts], x_out = sn[tn[i_tn_ac[i]].i2].x[ts];
-                double  qv    = vn[i_vn_ac[i]].qv[ts], To = tn[i_tn_ac[i]].To[ts], ho = tn[i_tn_ac[i]].ho[ts];
-                double  t_out_lim, x_out_lim;
 
                 if(((tn[i_tn_ac[i]].ac_mode[ts] == AC_AUTO)    && (abs(t_in - pre_t) > sts.thrm_err)) ||
                    ((tn[i_tn_ac[i]].ac_mode[ts] == AC_HEATING) && (    t_in          < pre_t       )) ||
@@ -253,6 +250,9 @@ public:
                 }
                 else{       //設定温度を満たしていれば最大能力を超えているかチェック & 除湿による吹き出し口絶対湿度の計算
                     if(tn[i_tn_ac[i]].ac_model == AC_RAC){
+                        double  x_in  = sn[tn[i_tn_ac[i]].i1].x[ts], x_out = sn[tn[i_tn_ac[i]].i2].x[ts];
+                        double  qv    = vn[i_vn_ac[i]].qv[ts], To = tn[i_tn_ac[i]].To[ts], ho = tn[i_tn_ac[i]].ho[ts];
+                        double  t_out_lim, x_out_lim;
                         if(t_in < t_out){
                             sn[tn[i_tn_ac[i]].i2].x[ts] = x_in;
                             LOG_PRINT("RAC:" << pre_t << ", " << t_in << ", " <<  t_out << ", " << 
@@ -274,7 +274,10 @@ public:
                             }
                         }
                     }
-                    if(tn[i_tn_ac[i]].ac_model == AC_DUCT_C){       
+                    if(tn[i_tn_ac[i]].ac_model == AC_DUCT_C){ 
+                        double  x_in  = sn[tn[i_tn_ac[i]].i1].x[ts], x_out = sn[tn[i_tn_ac[i]].i2].x[ts];
+                        double  qv    = vn[i_vn_ac[i]].qv[ts], To = tn[i_tn_ac[i]].To[ts], ho = tn[i_tn_ac[i]].ho[ts];
+                        double  t_out_lim, x_out_lim;      
                         if(t_in < t_out){
                             sn[tn[i_tn_ac[i]].i2].x[ts] = x_in;
                             LOG_PRINT("RAC:" << pre_t << ", " << t_in << ", " <<  t_out << ", " << 
