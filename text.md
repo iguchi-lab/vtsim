@@ -439,6 +439,8 @@ airconの名称をキーとした以下の設定により、自動的にエア�
 |ac_model|エアコンモデル|なし（顕熱負荷のみを計算）:0 または vt.AC_NONE<br>RACモデル：1 または vt.AC_RAC<br>DUCT_CENTRALモデル：2 または vt.AC_DUCT_C<br>RAC2モデル（将来用）：2 または vt.RAC2<br>電中研モデル（将来用）：3 または vr.CRIEPI|vt.AC_NONE|
 |ac_mode|エアコンの運転モード|自動（暖冷房で設定温度を維持）：0 または vt.AC_AUTO<br>暖房：1 または vt.AC_HEATING<br>冷房：2 または vt.AC_COOLING<br>停止：3 または vt.AC_STOP|なし|
 |pre_tmp|設定温度 [℃]|数値（リストでの設定も可）|
+|pre_x|設定絶対湿度 [kg\kg(DA)]|数値（リストでの設定も可）|※vt.AC_RACかvt.AC_DUCT_Cでは入力が必須ですが、現状では無視されます。
+
 
 ### heater
 heaterの名称をキーとした以下の設定により、自動的にヒーターを設定することが可能です。ヒーターのノードが設定され、setで指定されたノードと接続されます。
