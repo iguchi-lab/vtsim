@@ -17,7 +17,7 @@
   Google Colabで下記のコードを実行して、インストールします。
 
 ```
-!pip install git+https://github.com/iguchi-lab/vtsim4
+!pip install git+https://github.com/iguchi-lab/vtsim
 from vtsim import vtsim as vt
 ```
   あわせて下記も実行しておくことを便利です。
