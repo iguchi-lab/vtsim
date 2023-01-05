@@ -447,14 +447,24 @@ airconの名称をキーとした以下の設定により、自動的にエア�
 |q_max_H|最大暖房能力 [W]|数値（リスト不可）|なし<br>vt.AC_RACでのみ必須|
 |e_rtd_H|定格暖房エネルギー消費効率 [-]|数値（リスト不可）|なし<br>vt.AC_RACでのみ必須|
 |dualcompressor|デュアルコンプレッサーあり／なし|bool型 0: False、1: True|なし<br>vt.AC_RACでのみ必須|
-
 |q_hs_rtd_H|熱源機の定格暖房能力 [W]|数値（リスト不可）|なし<br>vt.AC_DUCT_Cでのみ必須|
 |q_hs_mid_H|熱源機の中間暖房能力 [W]|数値（リスト不可）|なし<br>vt.AC_DUCT_Cでのみ必須|
 |q_hs_min_H|熱源機の最小暖房能力 [W]|数値（リスト不可）|なし<br>vt.AC_DUCT_Cでのみ必須|
 |P_hs_rtd_H|熱源機の定格暖房消費電力 [W]|数値（リスト不可）|なし<br>vt.AC_DUCT_Cでのみ必須|
+|V_fan_rtd_H|定格暖房能力運転時の送風機の風量 [m<sup>3</sup>/s]|数値（リスト不可）|なし<br>vt.AC_DUCT_Cでのみ必須<br>単位要注意|
+|V_fan_mid_H|中間暖房能力運転時の送風機の風量 [m<sup>3</sup>/s]|数値（リスト不可）|なし<br>vt.AC_DUCT_Cでのみ必須<br>単位要注意|
+|P_fan_rtd_H|定格暖房能力運転時の送風機の消費電力 [W]|数値（リスト不可）|なし<br>vt.AC_DUCT_Cでのみ必須|
 |P_fan_mid_H|中間暖房能力運転時の送風機の消費電力 [W]|数値（リスト不可）|なし<br>vt.AC_DUCT_Cでのみ必須|
 |V_hs_dsgn_H|暖房時の送風機の設計風量  [m<sup>3</sup>/s]|数値（リスト不可）|なし<br>vt.AC_DUCT_Cでのみ必須<br>単位要注意|
-
+|q_hs_rtd_C|熱源機の定格冷房能力 [W]|数値（リスト不可）|なし<br>vt.AC_DUCT_Cでのみ必須|
+|q_hs_mid_C|熱源機の中間冷房能力 [W]|数値（リスト不可）|なし<br>vt.AC_DUCT_Cでのみ必須|
+|q_hs_min_C|熱源機の最小冷房能力 [W]|数値（リスト不可）|なし<br>vt.AC_DUCT_Cでのみ必須|
+|P_hs_rtd_C|熱源機の定格冷房消費電力 [W]|数値（リスト不可）|なし<br>vt.AC_DUCT_Cでのみ必須|
+|V_fan_rtd_C|定格冷房能力運転時の送風機の風量 [m<sup>3</sup>/s]|数値（リスト不可）|なし<br>vt.AC_DUCT_Cでのみ必須<br>単位要注意|
+|V_fan_mid_C|中間冷房能力運転時の送風機の風量 [m<sup>3</sup>/s]|数値（リスト不可）|なし<br>vt.AC_DUCT_Cでのみ必須<br>単位要注意|
+|P_fan_rtd_C|定格冷房能力運転時の送風機の消費電力 [W]|数値（リスト不可）|なし<br>vt.AC_DUCT_Cでのみ必須|
+|P_fan_mid_C|中間冷房能力運転時の送風機の消費電力 [W]|数値（リスト不可）|なし<br>vt.AC_DUCT_Cでのみ必須|
+|V_hs_dsgn_C|冷房時の送風機の設計風量  [m<sup>3</sup>/s]|数値（リスト不可）|なし<br>vt.AC_DUCT_Cでのみ必須<br>単位要注意|
 |To|外気温度 [℃]|数値（リストでの設定も可）|なし<br>vt.AC_RACとvt.DUCT_Cで必須|
 |ho|外気相対湿度 [%]|数値（リストでの設定も可）|なし<br>vt.AC_RACとvt.DUCT_Cで必須|
 
@@ -531,7 +541,7 @@ air_cleanerの名称をキーとした以下の設定により、空気清浄機
 
 ### インストール（使いそうなライブラリも含む）
 ```
-!pip install git+https://github.com/iguchi-lab/vtsim4
+!pip install git+https://github.com/iguchi-lab/vtsim
 from vtsim import vtsim as vt
 
 !pip install japanize-matplotlib
