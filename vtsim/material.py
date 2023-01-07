@@ -1,3 +1,5 @@
+import pandas as pd
+
 class Material:
     def set_material(self, name, lambda_, capa_):
         self.material[name] = {'lambda': lambda_, 'capa': capa_}
