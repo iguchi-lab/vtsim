@@ -39,8 +39,8 @@ class Wall:
         return {'U_w': self.u_value, 'capa_w': self.capa_w, 'eta_w': 0.8}
 
 wall = {}
-for wl in wal_data.basic:   wall[wl] = Wall(wal_data.basic[wl])
-for wl in wal_data.kameido: wall[wl] = Wall(wal_data.kameido[wl])
-for wl in wal_data.FPJ:     wall[wl] = Wall(wal_data.FPJ[wl])
-for wl in wal_data.okayama: wall[wl] = Wall(wal_data.okayama[wl])
-for wl in wal_data.oosaka:  wall[wl] = Wall(wal_data.oosaka[wl])
+for wl in wal_data.wall_basic:   wall[wl] = Wall(wal_data.wall_basic[wl])
+for wl in wal_data.wall_kameido: wall[wl] = Wall(wal_data.wall_kameido[wl])
+for wl in wal_data.wall_FPJ:     wall[wl] = Wall(wal_data.wall_FPJ[wl])
+for wl in wal_data.wall_okayama: wall[wl] = Wall(wal_data.wall_okayama[wl])
+for wl in wal_data.wall_oosaka:  wall[wl] = Wall(wal_data.wall_oosaka[wl])
