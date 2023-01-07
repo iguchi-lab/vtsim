@@ -258,6 +258,8 @@ def make_solar(**kwargs):
             td = - td / 2 / 3600
         df_i = pd.concat([s_ig, sun_loc(s_ig.index, lat = lat, lon = lon, td = td)], axis = 1)
         df_i = pd.concat([df_i, sep_direct_diffuse(s_ig, df_i['hs'])], axis = 1)                                #直散分離結果の追加  
+        df_i = direc_solar(df_i['Ib'], df_i['Id'],                                                              #方位別日射量の追加
+                       df_i['sin_hs'], df_i['cos_hs'], df_i['hs'], df_i['sin_AZs'], df_i['cos_AZs'], df_i['AZs'])
     else:
         if 's_ib' in kwargs:    s_ib = kwargs['s_ib']
         else:                   raise Exception('ERROR: 水平面拡散日射量 s_ig がありません。法線面直達日射量 s_ib もありません。')
@@ -269,8 +271,7 @@ def make_solar(**kwargs):
             td = (s_ib.index[1] - s_ib.index[0]).seconds + (s_ib.index[1] - s_ib.index[0]).microseconds / 1000000   #t_stepの読み込み
             td = - td / 2 / 3600
         df_i = pd.concat([s_ib, s_id, sun_loc(s_ib.index, lat = lat, lon = lon, td = td)], axis = 1)  
-
-    df_i = direc_solar(df_i['Ib'], df_i['Id'],                                                              #方位別日射量の追加
+        df_i = direc_solar(s_ib, s_id,                                                                              #方位別日射量の追加
                        df_i['sin_hs'], df_i['cos_hs'], df_i['hs'], df_i['sin_AZs'], df_i['cos_AZs'], df_i['AZs'])
 
     solar =     {
