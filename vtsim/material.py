@@ -1,5 +1,5 @@
-import lib.mat_data as mat
-import lib.wal_data as wal
+import mat_data as mat
+import wal_data as wal
 
 class Material:
     def set_material(self, name, lambda_, capa_):
