@@ -1,12 +1,12 @@
-import lib.mat_data
-import lib.wal_data
+import lib.mat_data as mat
+import lib.wal_data as wal
 
 class Material:
     def set_material(self, name, lambda_, capa_):
         self.material[name] = {'lambda': lambda_, 'capa': capa_}
 
     def __init__(self):
-        self.material = mat_data.data
+        self.material = mat.data
 
 class Wall:
     def __init__(self, wall):
@@ -39,8 +39,8 @@ class Wall:
         return {'U_w': self.u_value, 'capa_w': self.capa_w, 'eta_w': 0.8}
 
 wall = {}
-for wl in wal_data.basic:   wall[wl] = Wall(wal_data.basic[wl])
-for wl in wal_data.kameido: wall[wl] = Wall(wal_data.kameido[wl])
-for wl in wal_data.FPJ:     wall[wl] = Wall(wal_data.FPJ[wl])
-for wl in wal_data.okayama: wall[wl] = Wall(wal_data.okayama[wl])
-for wl in wal_data.oosaka:  wall[wl] = Wall(wal_data.oosaka[wl])
+for wl in wal.basic:   wall[wl] = Wall(wal.basic[wl])
+for wl in wal.kameido: wall[wl] = Wall(wal.kameido[wl])
+for wl in wal.FPJ:     wall[wl] = Wall(wal.FPJ[wl])
+for wl in wal.okayama: wall[wl] = Wall(wal.okayama[wl])
+for wl in wal.oosaka:  wall[wl] = Wall(wal.oosaka[wl])
