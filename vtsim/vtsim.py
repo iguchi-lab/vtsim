@@ -98,7 +98,7 @@ read_csv = lambda fn:   pd.read_csv(fn, index_col = 0, parse_dates = True).filln
                                                                           .fillna(method = 'ffill')     #csvファイルの読み込み
 
 index    = lambda freq, length:   pd.DataFrame(index = pd.date_range(datetime(2021, 1, 1, 0, 0, 0), 
-                                               datetime(2021, 1, 1, 0, 0, 0) + timedelta(seconds = length), 
+                                               datetime(2021, 1, 1, 0, 0, 0) + timedelta(seconds = length - 1), 
                                                freq = freq)).index                                      #頻度freq、長さlengthのindex
 
 ###############################################################################
