@@ -390,8 +390,8 @@ def set_glass(input):
         n1_os = n1_os + '_g'
 
         area    = gl['area']
-        alpha_1 = gl['alpha_1'] if 'alpha_1' in gl else 9.0
-        alpha_2 = gl['alpha_2'] if 'alpha_2' in gl else 25.0
+        alpha_1 = gl['alpha_1'] if 'alpha_1' in gl else 4.4
+        alpha_2 = gl['alpha_2'] if 'alpha_2' in gl else 20.3
 
         input['sn'][n1_is] = {'t_flag': vt.SN_CALC, 'area': area}
         input['sn'][n1_os] = {'t_flag': vt.SN_CALC, 'area': area}
