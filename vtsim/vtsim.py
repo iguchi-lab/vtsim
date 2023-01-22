@@ -234,6 +234,7 @@ def run_calc(input):                                                            
     dat_list = make_df(calc.result(), pd.to_datetime(input['index'], format='%Y/%m/%d %H:%M:%S'))
     opt = input['opt'] if 'opt' in input else OPT_GRAPH
 
+    logger.info('Finish Calc')
     output_calc(dat_list, opt)
 
 def set_calc_status(input):
@@ -746,7 +747,7 @@ def get_keys(dict):
     return keys
 
 def make_df(res, ix):
-    global df_p, df_c, df_t, df_x, df_qv, df_qt1, df_qt2, df_elec
+    global df_p, df_c, df_t, df_x, df_qv, df_qt1, df_qt2, df_ls, df_ll, df_elec
     dat_list = []
 
     if len(res[0]) != 0:    
@@ -790,10 +791,22 @@ def make_df(res, ix):
         dat_list.append({'fn': 'thrm_qt2.csv', 'title': '熱量2', 'unit': '[W]', 'df': df_qt2})
     else:
         df_qt2 = None
-
+    
     if len(res[7]) != 0:    
-        df_elec = pd.DataFrame(np.array(res[7]).T,  index = ix, columns = get_keys(calc.t_net))
-        dat_list.append({'fn': 'thrm_elec.csv', 'title': '電力', 'unit': '[kW/h]', 'df': df_elec})
+        df_ls = pd.DataFrame(np.array(res[7]).T,  index = ix, columns = get_keys(calc.t_net))
+        dat_list.append({'fn': 'load_s.csv', 'title': '顕熱負荷', 'unit': '[kWh/h]', 'df': df_ls})
+    else:
+        df_elec = None
+    
+    if len(res[8]) != 0:    
+        df_ll = pd.DataFrame(np.array(res[8]).T,  index = ix, columns = get_keys(calc.t_net))
+        dat_list.append({'fn': 'load_l.csv', 'title': '潜熱負荷', 'unit': '[kWh/h]', 'df': df_ll})
+    else:
+        df_elec = None
+
+    if len(res[9]) != 0:    
+        df_elec = pd.DataFrame(np.array(res[9]).T,  index = ix, columns = get_keys(calc.t_net))
+        dat_list.append({'fn': 'thrm_elec.csv', 'title': '電力', 'unit': '[kWh/h]', 'df': df_elec})
     else:
         df_elec = None
 
