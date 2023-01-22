@@ -13,7 +13,7 @@ public:
     double              phi_0;                                                              //応答係数                                                        
     vector<double>      cof_r, cof_phi, t_dash_gs;
     vector<double>      qt;                                                                 //熱流
-    vector<double>      Ls, Ll, E_E;                                                        //顕熱負荷、潜熱負荷、電力
+    vector<double>      Ls = {0.0}, Ll = {0.0}, E_E = {0.0};                                //顕熱負荷、潜熱負荷、電力
 
     int                 ac_model;
     vector<int>         aircon_on, ac_mode;                                                 //エアコンのON/OFF、エアコン運転モード
@@ -152,7 +152,6 @@ public:
             Ll[ts]  = L_wtr   * rho_air * (X_out     - X_in)      * V_supply * 1e+3 * 3600 / 1e+6;
             return make_tuple(Theta_out, X_out);                                         
         }
-        E_E[ts] = 0.0;
         return make_tuple(0.0, 0.0);
     }
 };
