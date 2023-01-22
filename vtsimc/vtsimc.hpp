@@ -543,8 +543,9 @@ public:
     }
 
     tuple<vector<vector<double>>, vector<vector<double>>, vector<vector<double>>, vector<vector<double>>,
-          vector<vector<double>>, vector<vector<double>>, vector<vector<double>>, vector<vector<double>>> result(){
-        vector<vector<double>>   r_p, r_c, r_t, r_x, r_qv, r_qt1, r_qt2, r_elec;
+          vector<vector<double>>, vector<vector<double>>, vector<vector<double>>, vector<vector<double>>,
+          vector<vector<double>>, vector<vector<double>>> result(){
+        vector<vector<double>>   r_p, r_c, r_t, r_x, r_qv, r_qt1, r_qt2, r_ls, r_ll, r_elec;
         for(Node n: sn){
             r_p.push_back(n.p);
             r_c.push_back(n.c);
@@ -557,8 +558,10 @@ public:
         }
         for(Thrm_Net nt: tn){   
             r_qt2.push_back(nt.qt);
+            r_ls.push_back(nt.Ls);
+            r_ll.push_back(nt.Ll);
             r_elec.push_back(nt.E_E);
         }
-        return forward_as_tuple(r_p, r_c, r_t, r_x, r_qv, r_qt1, r_qt2, r_elec);
+        return forward_as_tuple(r_p, r_c, r_t, r_x, r_qv, r_qt1, r_qt2, r_ls, r_ll, r_elec);
     }
 };
