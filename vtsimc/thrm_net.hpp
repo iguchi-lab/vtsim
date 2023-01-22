@@ -13,7 +13,7 @@ public:
     double              phi_0;                                                              //応答係数                                                        
     vector<double>      cof_r, cof_phi, t_dash_gs;
     vector<double>      qt;                                                                 //熱流
-    vector<double>      E_E;
+    vector<double>      Ls, Ll, E_E;                                                        //顕熱負荷、潜熱負荷、電力
 
     int                 ac_model;
     vector<int>         aircon_on, ac_mode;                                                 //エアコンのON/OFF、エアコン運転モード
@@ -89,6 +89,8 @@ public:
                 x1 = calc_f_H_Theta(Q_dash_T_H / (q_max_H * 3600 * 1e-6), Theta, q_rtd_C, dualcompressor);
                 x2 = calc_f_H_Theta(1.0 / q_r_max_H,                      7.0,   q_rtd_C, dualcompressor);
                 E_E[ts] =  x1 / x2 * (q_rtd_H / e_rtd_H) * 1e-3; //(5)
+                Ls[ts]  = c_p_air * rho_air * (Theta_out - Theta_in ) * V_supply        * 3600 / 1e+6;
+                Ll[ts]  = L_wtr   * rho_air * (X_out     - X_in)      * V_supply * 1e+3 * 3600 / 1e+6;
             }
             return make_tuple(Theta_out, X_in);
         }        
@@ -117,6 +119,8 @@ public:
                 x1 = calc_f_C_Theta(Q_dash_T_C / (q_max_C * 3600 * 1e-6), Theta, q_rtd_C, dualcompressor);
                 x2 = calc_f_C_Theta(1.0 / q_r_max_C,                        35.0, q_rtd_C, dualcompressor);
                 E_E[ts] = x1 / x2 * (q_rtd_C / e_rtd_C) * 1e-3; //(20)
+                Ls[ts]  = c_p_air * rho_air * (Theta_out - Theta_in ) * V_supply        * 3600 / 1e+6;
+                Ll[ts]  = L_wtr   * rho_air * (X_out     - X_in)      * V_supply * 1e+3 * 3600 / 1e+6;
             }
         }
         return make_tuple(Theta_out, X_out);
@@ -135,6 +139,8 @@ public:
                                                                        V_fan_mid_H * 3600, P_fan_rtd_H, P_fan_mid_H, V_hs_dsgn_H * 3600,
                                                                        Theta, h, Theta_out, Theta_in, X_out, X_in, V_supply * 3600);
             E_E[ts] = E_E_comp + E_E_fan;
+            Ls[ts]  = c_p_air * rho_air * (Theta_out - Theta_in ) * V_supply        * 3600 / 1e+6;
+            Ll[ts]  = L_wtr   * rho_air * (X_out     - X_in)      * V_supply * 1e+3 * 3600 / 1e+6;
             return make_tuple(Theta_out, X_out);
         }
         else if(Theta_out < Theta_in){                      //冷房時
@@ -142,6 +148,8 @@ public:
                                                                        V_fan_mid_C * 3600, P_fan_rtd_C, P_fan_mid_C, V_hs_dsgn_C * 3600,
                                                                        Theta, h, Theta_out, Theta_in, X_out, X_in, V_supply * 3600);
             E_E[ts] = E_E_comp + E_E_fan;
+            Ls[ts]  = c_p_air * rho_air * (Theta_out - Theta_in ) * V_supply        * 3600 / 1e+6;
+            Ll[ts]  = L_wtr   * rho_air * (X_out     - X_in)      * V_supply * 1e+3 * 3600 / 1e+6;
             return make_tuple(Theta_out, X_out);                                         
         }
         E_E[ts] = 0.0;
