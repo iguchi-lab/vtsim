@@ -118,7 +118,7 @@ ac_mode = {'region1': {'MR':  make_8760_data(period_1, holiday, ac_mode_w_MR_h, 
           }
 
 pre_tmp = {'region1': {'MR':  make_8760_data(period_1, holiday, pre_tmp_w_MR_h,  pre_tmp_h_MR_h,  pre_tmp_w_MR_c,  pre_tmp_h_MR_c,  20.0), 
-                       'BR1': make_8760_data(period_1, holiday, pre_tmp_w_BR_h,  pre_tmp_h_BR_h,  pre_tmp_w_BR_c,  pre_tmp_h_BR_c,  20.00), 
+                       'BR1': make_8760_data(period_1, holiday, pre_tmp_w_BR_h,  pre_tmp_h_BR_h,  pre_tmp_w_BR_c,  pre_tmp_h_BR_c,  20.0), 
                        'CR1': make_8760_data(period_1, holiday, pre_tmp_w_CR1_h, pre_tmp_h_CR1_h, pre_tmp_w_CR1_c, pre_tmp_h_CR1_c, 20.0), 
                        'CR2': make_8760_data(period_1, holiday, pre_tmp_w_CR2_h, pre_tmp_h_CR2_h, pre_tmp_w_CR2_c, pre_tmp_h_CR2_c, 20.0)},
            'region2': {'MR':  make_8760_data(period_2, holiday, pre_tmp_w_MR_h,  pre_tmp_h_MR_h,  pre_tmp_w_MR_c,  pre_tmp_h_MR_c,  20.0), 
