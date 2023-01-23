@@ -249,7 +249,7 @@ public:
                     t0[tn[i_tn_ac[i]].i1] = pre_t;
                 }
                 else{       //設定温度を満たしていれば最大能力を超えているかチェック & 除湿による吹き出し口絶対湿度の計算
-                    if(tn[i_tn_ac[i]].ac_model == None){
+                    if(tn[i_tn_ac[i]].ac_model == AC_NONE){
                         double  x_in  = sn[tn[i_tn_ac[i]].i1].x[ts], x_out = sn[tn[i_tn_ac[i]].i2].x[ts];
                         double  qv    = vn[i_vn_ac[i]].qv[ts], To = tn[i_tn_ac[i]].To[ts], ho = tn[i_tn_ac[i]].ho[ts];
                         double  t_out_lim, x_out_lim;
