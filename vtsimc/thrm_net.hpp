@@ -66,7 +66,7 @@ public:
      電力_RAC
     **********************************************************************************************/
     tuple<double, double> get_None_hs_out(double Theta_in, double Theta_out, double X_in, double X_out,
-                                      double V_supply, double Theta, double h, double ts){
+                                          double V_supply, double Theta, double h, double ts){
         E_E[ts] = 0.0; //(5)
         Ls[ts]  = c_p_air * rho_air * (Theta_out - Theta_in ) * V_supply        * 3600 / 1e+6;
         Ll[ts]  = L_wtr   * rho_air * (X_out     - X_in)      * V_supply * 1e+3 * 3600 / 1e+6;      
@@ -74,7 +74,7 @@ public:
     }
 
     tuple<double, double> get_RAC_hs_out(double Theta_in, double Theta_out, double X_in, double X_out,
-                                      double V_supply, double Theta, double h, double ts){
+                                         double V_supply, double Theta, double h, double ts){
 
         double  L_H   = c_p_air * rho_air * (Theta_out - Theta_in ) * V_supply * 3600 / 1e+6,
                 L_CS  = c_p_air * rho_air * (Theta_in  - Theta_out) * V_supply * 3600 / 1e+6, 
