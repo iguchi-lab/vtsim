@@ -13,7 +13,7 @@ public:
     double              phi_0;                                                              //応答係数                                                        
     vector<double>      cof_r, cof_phi, t_dash_gs;
     vector<double>      qt;                                                                 //熱流
-    vector<double>      Ls = {0.0}, Ll = {0.0}, E_E = {0.0};                                //顕熱負荷、潜熱負荷、電力
+    vector<double>      Ls, Ll, E_E;                                                        //顕熱負荷、潜熱負荷、電力
 
     int                 ac_model;
     vector<int>         aircon_on, ac_mode;                                                 //エアコンのON/OFF、エアコン運転モード
@@ -34,6 +34,8 @@ public:
         qt.assign(length, 0.0);
         t_dash_gs.assign(10, 0.0);
         aircon_on.assign(length, 0);                                                        //熱量を0に初期化      
+        Ls.assign(length, 0.0);    
+        Ll.assign(length, 0.0);    
         E_E.assign(length, 0.0);    
     }              
 
