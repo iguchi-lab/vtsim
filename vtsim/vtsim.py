@@ -166,7 +166,7 @@ def to_list_i(v):
 ###############################################################################
 # main
 ###############################################################################
-def run_calc(input):                                                                        #はじめに呼び出される関数    
+def run_calc(input):                                                                        #はじめに呼び出される関数
     if   type(input) == dict:   input = to_json(input)                                      #辞書型であれば、JSON形式に変換
     elif type(input) != str:    raise Exception('ERROR: inputは、辞書型かJSON形式である必要がります。') #文字列（JSON形式)で無ければエラー
     
@@ -540,7 +540,7 @@ def sep_sfx(s, opt = False):
         if opt: 
             return s[:s.find(':')] + '(' + s[s.find(':') + 1:] + ')'
         else:
-            print(s + ' の添字 ' + s[s.find(':'):] + ' は無視されました。')
+            ogger.info(s + ' の添字 ' + s[s.find(':'):] + ' は無視されました。')
             return s[:s.find(':')]
     else:                      
         return s
@@ -796,17 +796,17 @@ def make_df(res, ix):
         df_ls = pd.DataFrame(np.array(res[7]).T,  index = ix, columns = get_keys(calc.t_net))
         dat_list.append({'fn': 'load_s.csv', 'title': '顕熱負荷', 'unit': '[kWh/h]', 'df': df_ls})
     else:
-        df_elec = None
+        df_ls = None
     
     if len(res[8]) != 0:    
         df_ll = pd.DataFrame(np.array(res[8]).T,  index = ix, columns = get_keys(calc.t_net))
         dat_list.append({'fn': 'load_l.csv', 'title': '潜熱負荷', 'unit': '[kWh/h]', 'df': df_ll})
     else:
-        df_elec = None
+        df_ll = None
 
     if len(res[9]) != 0:    
         df_elec = pd.DataFrame(np.array(res[9]).T,  index = ix, columns = get_keys(calc.t_net))
-        dat_list.append({'fn': 'thrm_elec.csv', 'title': '電力', 'unit': '[kWh/h]', 'df': df_elec})
+        dat_list.append({'fn': 'elec.csv', 'title': '電力', 'unit': '[kWh/h]', 'df': df_elec})
     else:
         df_elec = None
 
