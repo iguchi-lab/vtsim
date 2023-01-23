@@ -73,6 +73,14 @@ pre_tmp_h_CR2_h = [20] * 24
 pre_tmp_w_CR2_c = [28.0] *  8 + [27.0] * 15 + [28.0] * 1
 pre_tmp_h_CR2_c = [28.0] *  8 + [27.0] * 15 + [28.0] * 1
 
+
+vnt_w_MR        = [0, 0, 0,  0, 0, 0,  75, 0,  0,      0,   0, 0,    75, 0, 0,  0,    0,     0,   150,   150,    0,   0,   0,   0]
+vnt_h_MR        = [0, 0, 0,  0, 0, 0,   0, 0, 75,      0,   0, 0,    75, 0, 0,  0,    0,   150,   150,     0,    0,   0,   0,   0]
+vnt_w_BT        = [0, 0, 0,  0, 0, 0,   0, 0,  0,      0,   0, 0,     0, 0, 0,  0,    0,     0,     0,     0,   50,  25, 100,   0]
+vnt_h_BT        = [0, 0, 0,  0, 0, 0,   0, 0,  0,      0,   0, 0,     0, 0, 0,  0,   75,    25,     0,     0,   25,  25, 100,   0]
+vnt_w_RR        = [0, 0, 0,  0, 0, 6,   2, 0,  0.8,    0,   0, 0.8,   0, 0, 0,  0.8,  0.8,   0.8,   0.8,   0.8,  2,   0,   2.8, 0]
+vnt_h_RR        = [0, 0, 0,  0, 0, 0,   4, 4,  0,    1.2, 1.2, 0,     0, 0, 0,  2,    0.8,   0,    -2,   0.8,    0,   2,   0.8, 0]
+
 def make_8760_data(ac_mode, holiday, w_h, h_h, w_c, h_c, default):
     output = []
     for i in range(365):
@@ -143,10 +151,15 @@ pre_tmp = {'region1': {'MR':  make_8760_data(period_1, holiday, pre_tmp_w_MR_h, 
                        'CR2': make_8760_data(period_6, holiday, pre_tmp_w_CR2_h, pre_tmp_h_CR2_h, pre_tmp_w_CR2_c, pre_tmp_h_CR2_c, 20.0)},
            'region7': {'MR':  make_8760_data(period_7, holiday, pre_tmp_w_MR_h,  pre_tmp_h_MR_h,  pre_tmp_w_MR_c,  pre_tmp_h_MR_c,  20.0), 
                        'BR':  make_8760_data(period_7, holiday, pre_tmp_w_BR_h,  pre_tmp_h_BR_h,  pre_tmp_w_BR_c,  pre_tmp_h_BR_c,  20.0), 
-                       'CR1': make_8760_data(period_7, holiday, pre_tmp_w_CR1_h, pre_tmp_h_CR1_h, pre_tmp_w_CR1_c, pre_tmp_h_CR1_c, 20.03), 
+                       'CR1': make_8760_data(period_7, holiday, pre_tmp_w_CR1_h, pre_tmp_h_CR1_h, pre_tmp_w_CR1_c, pre_tmp_h_CR1_c, 20.0), 
                        'CR2': make_8760_data(period_7, holiday, pre_tmp_w_CR2_h, pre_tmp_h_CR2_h, pre_tmp_w_CR2_c, pre_tmp_h_CR2_c, 20.0)},
            'region8': {'MR':  make_8760_data(period_8, holiday, pre_tmp_w_MR_h,  pre_tmp_h_MR_h,  pre_tmp_w_MR_c,  pre_tmp_h_MR_c,  20.0), 
                        'BR':  make_8760_data(period_8, holiday, pre_tmp_w_BR_h,  pre_tmp_h_BR_h,  pre_tmp_w_BR_c,  pre_tmp_h_BR_c,  20.0), 
                        'CR1': make_8760_data(period_8, holiday, pre_tmp_w_CR1_h, pre_tmp_h_CR1_h, pre_tmp_w_CR1_c, pre_tmp_h_CR1_c, 20.0), 
                        'CR2': make_8760_data(period_8, holiday, pre_tmp_w_CR2_h, pre_tmp_h_CR2_h, pre_tmp_w_CR2_c, pre_tmp_h_CR2_c, 20.0)},
+          }
+
+vol     = {'MR': make_8760_data([1] * 365, holiday, vnt_w_MR, vnt_h_MR, [0] * 24, [0] * 24),
+           'BT': make_8760_data([1] * 365, holiday, vnt_w_BT, vnt_h_BT, [0] * 24, [0] * 24),
+           'RR': make_8760_data([1] * 365, holiday, vnt_w_RR, vnt_h_RR, [0] * 24, [0] * 24)
           }
