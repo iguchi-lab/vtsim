@@ -90,11 +90,20 @@ def make_wind(d, s, c_in = 0.7, c_out = -0.55, c_horizontal = -0.90):
 rn = lambda t, h: (94.21 + 39.06 * np.sqrt(e(t, h) / 100) \
                    - 0.85 * Sigma * np.power(T(t), 4)) * 4.187 / 1000                           #夜間放射 MJ/m2
 
-def make_nocturnal(t, h):
+def make_nocturnal(**kwargs t, h):
     
-    df = pd.DataFrame(index = t.index) 
-    df['nocturnal'] = MJ_to_Wh(rn(t, h))
-    
+    if('t' in kwargs): 
+        t = kwargs['t']
+        h = kwargs['h']
+        df = pd.DataFrame(index = t.index) 
+        df['nocturnal'] = MJ_to_Wh(rn(t, h))
+    elif('n_r' in kwargs):
+        n_r = kwargs['n_r']
+        df = pd.DataFrame(index = n_r.index)
+        df['nocturnal'] = n_r
+    else:                   
+        raise Exception('ERROR: 温度 t がありません。夜間放射量 n_r もありません。')
+
     nocturnal = {
         '夜間_H':       df['nocturnal'],
         '夜間_V':       df['nocturnal'] * 0.5
