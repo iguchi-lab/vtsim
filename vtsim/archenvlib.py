@@ -90,7 +90,7 @@ def make_wind(d, s, c_in = 0.7, c_out = -0.55, c_horizontal = -0.90):
 rn = lambda t, h: (94.21 + 39.06 * np.sqrt(e(t, h) / 100) \
                    - 0.85 * Sigma * np.power(T(t), 4)) * 4.187 / 1000                           #夜間放射 MJ/m2
 
-def make_nocturnal(**kwargs t, h):
+def make_nocturnal(**kwargs):
     
     if('t' in kwargs): 
         t = kwargs['t']
