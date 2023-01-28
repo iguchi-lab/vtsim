@@ -151,7 +151,7 @@ calc_stsでvtsimの計算条件を設定します。辞書型(dict)で以下の�
 ```
 input = {
   'calc_sts': {
-    'solve':  vt.soive_LU,
+    'solve':  vt.solve_LU,
     'step_p': 1e-3,
     ...
   }
