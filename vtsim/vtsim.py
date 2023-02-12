@@ -305,7 +305,7 @@ def set_nocturnal(input):
     for n in input['nocturnal']:
         nr = input['nocturnal'][n]
         for nn in name:
-            if nn in nr: input['sn'][nn] = {'insolation': nr}
+            if nn in n: input['sn'][nn] = {'insolation': nr}
     return input
 
 def set_room(input):
