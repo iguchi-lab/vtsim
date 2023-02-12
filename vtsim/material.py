@@ -36,7 +36,7 @@ class Wall:
         self.capa_w  = sum(c)
     
     def spec(self):
-        return {'U_w': self.u_value, 'capa_w': self.capa_w, 'eta_w': 0.8}
+        return {'U_w': self.u_value, 'capa_w': self.capa_w, 'eta_w': 0.8, 'epsilon_w': 0.90}
 
 wall = {}
 for wl in wal_data.wall_basic:   wall[wl] = Wall(wal_data.wall_basic[wl])
