@@ -314,12 +314,12 @@ vol     = {'MR': make_8760_data([1] * 365, holiday, vnt_w_MR, vnt_h_MR, [0] * 24
            'RR': make_8760_data([1] * 365, holiday, vnt_w_RR, vnt_h_RR, [0] * 24, [0] * 24, 0.0)
           }
 
-heat    ={'LD':            make_8760_data([1] * 365, holiday, heat_w_MR, heat_w_MR, [0] * 24, [0] * 24, 0.0),
-          'Kitchen':       make_8760_data([1] * 365, holiday, heat_w_KT, heat_w_KT, [0] * 24, [0] * 24, 0.0),
-          'Bath':          make_8760_data([1] * 365, holiday, heat_w_BT, heat_w_BT, [0] * 24, [0] * 24, 0.0),
-          'Toilet':        make_8760_data([1] * 365, holiday, heat_w_R1, heat_w_R1, [0] * 24, [0] * 24, 0.0),
-          'Sanitary':      make_8760_data([1] * 365, holiday, heat_w_SC, heat_w_SC, [0] * 24, [0] * 24, 0.0),
-          'Hall':          make_8760_data([1] * 365, holiday, heat_w_H1, heat_w_H1, [0] * 24, [0] * 24, 0.0),
-          'Bedroom':       make_8760_data([1] * 365, holiday, heat_w_BR, heat_w_BR, [0] * 24, [0] * 24, 0.0),
-          'ChildrenRoom1': make_8760_data([1] * 365, holiday, heat_w_C1, heat_w_C1, [0] * 24, [0] * 24, 0.0),
-          'ChildrenRoom2': make_8760_data([1] * 365, holiday, heat_w_C2, heat_w_C2, [0] * 24, [0] * 24, 0.0)}
+heat    ={'LD':            make_8760_data([1] * 365, holiday, heat_w_MR.tolist(), heat_w_MR.tolist(), [0] * 24, [0] * 24, 0.0),
+          'Kitchen':       make_8760_data([1] * 365, holiday, heat_w_KT.tolist(), heat_w_KT.tolist(), [0] * 24, [0] * 24, 0.0),
+          'Bath':          make_8760_data([1] * 365, holiday, heat_w_BT.tolist(), heat_w_BT.tolist(), [0] * 24, [0] * 24, 0.0),
+          'Toilet':        make_8760_data([1] * 365, holiday, heat_w_R1.tolist(), heat_w_R1.tolist(), [0] * 24, [0] * 24, 0.0),
+          'Sanitary':      make_8760_data([1] * 365, holiday, heat_w_SC.tolist(), heat_w_SC.tolist(), [0] * 24, [0] * 24, 0.0),
+          'Hall':          make_8760_data([1] * 365, holiday, heat_w_H1.tolist(), heat_w_H1.tolist(), [0] * 24, [0] * 24, 0.0),
+          'Bedroom':       make_8760_data([1] * 365, holiday, heat_w_BR.tolist(), heat_w_BR.tolist(), [0] * 24, [0] * 24, 0.0),
+          'ChildrenRoom1': make_8760_data([1] * 365, holiday, heat_w_C1.tolist(), heat_w_C1.tolist(), [0] * 24, [0] * 24, 0.0),
+          'ChildrenRoom2': make_8760_data([1] * 365, holiday, heat_w_C2.tolist(), heat_w_C2.tolist(), [0] * 24, [0] * 24, 0.0)}
