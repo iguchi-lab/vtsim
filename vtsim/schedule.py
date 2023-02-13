@@ -317,9 +317,9 @@ pre_tmp = {'region1': {'MR':  make_8760_data(period_1, holiday, pre_tmp_w_MR_h, 
                        'CR2': make_8760_data(period_8, holiday, pre_tmp_w_CR2_h, pre_tmp_h_CR2_h, pre_tmp_w_CR2_c, pre_tmp_h_CR2_c, 20.0)},
           }
 
-vol     = {'MR': make_8760_data([1] * 365, holiday, vnt_w_MR, vnt_h_MR, [0] * 24, [0] * 24, 0.0),
-           'BT': make_8760_data([1] * 365, holiday, vnt_w_BT, vnt_h_BT, [0] * 24, [0] * 24, 0.0),
-           'RR': make_8760_data([1] * 365, holiday, vnt_w_RR, vnt_h_RR, [0] * 24, [0] * 24, 0.0)
+vol     = {'MR': make_8760_data([1] * 365, holiday, vnt_w_MR.tolist(), vnt_h_MR.tolist(), [0] * 24, [0] * 24, 0.0),
+           'BT': make_8760_data([1] * 365, holiday, vnt_w_BT.tolist(), vnt_h_BT.tolist(), [0] * 24, [0] * 24, 0.0),
+           'RR': make_8760_data([1] * 365, holiday, vnt_w_RR.tolist(), vnt_h_RR.tolist(), [0] * 24, [0] * 24, 0.0)
           }
 
 heat    ={'LD':            make_8760_data([1] * 365, holiday, heat_w_MR.tolist(), heat_w_MR.tolist(), [0] * 24, [0] * 24, 0.0),
