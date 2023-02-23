@@ -540,7 +540,7 @@ def sep_sfx(s, opt = False):
         if opt: 
             return s[:s.find(':')] + '(' + s[s.find(':') + 1:] + ')'
         else:
-            ogger.info(s + ' の添字 ' + s[s.find(':'):] + ' は無視されました。')
+            logger.info(s + ' の添字 ' + s[s.find(':'):] + ' は無視されました。')
             return s[:s.find(':')]
     else:                      
         return s
