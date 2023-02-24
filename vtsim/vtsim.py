@@ -338,7 +338,7 @@ def set_ground(input):
         area = gnd['area']
 
         input['sn'][n1_is] = {'t_flag': vt.SN_CALC, 'area': area}
-        input['tn'][n1 +    ' -> ' + n1_is] = {'cdtc':  area / gnd['rg']}
+        input['tn'][n1 +    ' -> ' + n1_is] = {'cdtc':  to_list_f(area) / to_list_f(gnd['rg'])}
         input['tn'][n1_is + ' -> ' + n2   ] = {'area':  area,         'phi_0':   gnd['phi_0'],
                                                'cof_r': gnd['cof_r'], 'cof_phi': gnd['cof_phi']}
     return input
