@@ -556,10 +556,10 @@ public:
                         double          pre_cj = 0.0,
                                         vol    = vn[n].qv[ts],
                                         eta    = vn[n].eta.empty() ? 0 : vn[n].eta[ts];
-                        unsigned int    n1     = c_idc[vn[n].i1],
-                                        n2     = c_idc[vn[n].i2];
+                        unsigned int    n1     = vn[n].i1,
+                                        n2     = vn[n].i2;
                         
-                        if(vn[n].qv[ts] > 0){
+                        if(vol > 0){
                             if(n1 == c_idc[i]){
                                 k2 += vol / v;
                             }
@@ -568,7 +568,7 @@ public:
                                 k1 += (1 - eta) * pre_cj * vol / v;
                             }
                         }
-                        else if(vn[n].qv[ts] < 0){
+                        else if(vol < 0){
                             if(n2 == c_idc[i]){
                                 k2 += vol / v;
                             }
