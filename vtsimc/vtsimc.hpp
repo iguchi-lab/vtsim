@@ -517,6 +517,7 @@ public:
             }
 
             if(c_idc.size() > 0){
+                /*
                 for(unsigned int i = 0; i < c_idc.size(); i++){        
                     double m;
                     if(sn[c_idc[i]].m.empty())  m = 0;
@@ -539,6 +540,51 @@ public:
                     if(vn[i].qv[ts] < 0 && get<1>(sn[vn[i].i1].flag) == SN_CALC)    
                         sn[vn[i].i1].c[ts] += vn[i].qv[ts] * (sn[vn[i].i2].c[ts - 1] * (1 - eta) - sn[vn[i].i1].c[ts - 1]) * sts.t_step / sn[vn[i].i1].v[ts];
                 }
+                */
+
+
+                for(unsigned int i = 0; i < c_idc.size(); i++){        
+                    
+                    double  pre_ci = sn[c_idc[i]].c[ts - 1],
+                            beta   = sn[c_idc[i]].beta[ts],
+                            m      = sn[c_idc[i]].m.empty() ? 0 : sn[c_idc[i]].m[ts],
+                            v      = sn[c_idc[i]].v[ts],
+                            k1     = m / v,
+                            k2     = beta;
+
+                    for(unsigned int n = 0; n < vn.size(); n++){
+                        double          pre_cj = 0.0,
+                                        vol    = vn[n].qv[ts],
+                                        eta    = vn[n].eta.empty() ? 0 : vn[n].eta[ts];
+                        unsigned int    n1     = c_idc[vn[n].i1],
+                                        n2     = c_idc[vn[n].i2];
+                        
+                        if(vn[n].qv[ts] > 0){
+                            if(n1 == c_idc[i]){
+                                k2 += vol / v;
+                            }
+                            if(n2 == c_idc[i]){
+                                pre_cj = sn[n1].c[ts - 1];
+                                k1 += (1 - eta) * pre_cj * vol / v;
+                            }
+                        }
+                        else if(vn[n].qv[ts] < 0){
+                            if(n2 == c_idc[i]){
+                                k2 += vol / v;
+                            }
+                            if(n1 == c_idc[i]){
+                                pre_cj = sn[n2].c[ts - 1];
+                                k1 += (1 - eta) * pre_cj * vol / v;
+                            }
+                        }
+                    }
+                    
+                    double k = k2 == 0 ? 0 : k1 / k2;
+                    sn[c_idc[i]].c[ts] = (pre_ci - k) * exp(-k2 * sts.t_step) + k;
+                    
+                }
+
+                
                 for(unsigned int i = 0; i < sn.size(); i++)    LOG_CONTENTS("c" << sn[i].i << ": " << sn[i].c[ts] << "num/L, ");
                 LOG_CONTENTS(endl);
             }
