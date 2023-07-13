@@ -758,7 +758,7 @@ def make_df(res, ix):
 
     if len(res[1]) != 0:    
         df_c  = pd.DataFrame(np.array(res[1]).T,  index = ix, columns = get_keys(calc.node))
-        dat_list.append({'fn': 'vent_c.csv',   'title': '濃度',  'unit': '[個/L]', 'df': df_c})
+        dat_list.append({'fn': 'vent_c.csv',   'title': '濃度',  'unit': '[個/m3]', 'df': df_c})
     else:
         df_c = None
 
