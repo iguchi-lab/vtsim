@@ -570,11 +570,11 @@ public:
                         }
                         else if(vol < 0){
                             if(n2 == c_idc[i]){
-                                k2 += vol / v;
+                                k2 -= vol / v;
                             }
                             if(n1 == c_idc[i]){
                                 pre_cj = sn[n2].c[ts - 1];
-                                k1 += (1 - eta) * pre_cj * vol / v;
+                                k1 -= (1 - eta) * pre_cj * vol / v;
                             }
                         }
                     }
