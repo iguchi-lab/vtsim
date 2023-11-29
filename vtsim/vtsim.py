@@ -177,9 +177,7 @@ def run_calc(input):                                                            
     logger.info('opt = ' + str(opt))
     
     if opt == -1:
-        logging.basicConfig(level=logging.WARNING)
-    else:
-        logging.basicConfig(level=logging.INFO)
+        logger.setLevel(logging.CRITICAL)
     
     if 'vn' not in input:       input['vn'] = {}
     if 'tn' not in input:       input['tn'] = {}
