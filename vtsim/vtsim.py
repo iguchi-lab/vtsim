@@ -173,6 +173,9 @@ def run_calc(input):                                                            
     input = json.loads(input)                                                               #JSON形式を辞書型に変換
 
     opt = input['opt'] if 'opt' in input else OPT_GRAPH
+
+    logger.info('opt = ' + str(opt))
+    
     if opt == -1:
         logging.basicConfig(level=logging.WARNING)
     else:
