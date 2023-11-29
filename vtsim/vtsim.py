@@ -170,17 +170,17 @@ def run_calc(input):                                                            
     if   type(input) == dict:   input = to_json(input)                                      #辞書型であれば、JSON形式に変換
     elif type(input) != str:    raise Exception('ERROR: inputは、辞書型かJSON形式である必要がります。') #文字列（JSON形式)で無ければエラー
 
+    input = json.loads(input)                                                               #JSON形式を辞書型に変換
+
     opt = input['opt'] if 'opt' in input else OPT_GRAPH
     if opt == -1:
         logging.basicConfig(level=logging.WARNING)
     else:
         logging.basicConfig(level=logging.INFO)
     
-    input = json.loads(input)                                                               #JSON形式を辞書型に変換
     if 'vn' not in input:       input['vn'] = {}
     if 'tn' not in input:       input['tn'] = {}
 
-    
     if 'index' in input:        set_calc_status(input)                                      #計算条件を設定
     else:                       raise Exception('ERROR: index が存在しません。')             #indexが無ければエラー
 
