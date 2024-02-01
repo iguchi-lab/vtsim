@@ -291,9 +291,9 @@ public:
                             tie(t_out_lim, x_out_lim) 
                                 = tn[i_tn_ac[i]].get_DUCT_C_hs_out(t_in, t_out, x_in, x_out, qv, To, ho, ts);
                             
-                            if(t_out_lim - t_out > 0.001 || x_out_lim - x_out > 0.0001){
-                                tn[i_tn_ac[i]].pre_tmp[ts]  += 0.01;
-                                t0[tn[i_tn_ac[i]].i1]       += 0.01;
+                            if(t_out - t_out_lim > 0.001){
+                                tn[i_tn_ac[i]].pre_tmp[ts] -= 0.01;
+                                t0[tn[i_tn_ac[i]].i1]      -= 0.01;
                             }
                             
                         }
