@@ -28,10 +28,10 @@ T_dash = lambda t: T(100.0) / T(t)                                              
 Wh_to_MJ   = lambda v: v * 3.6 / 1000                                                   #Wh->MJ
 MJ_to_Wh   = lambda v: v * 1000 / 3.6
 
-f  = lambda t:    - 7.90295 * (T_dash(t) - 1) \
+f  = lambda t:    - 7.90298 * (T_dash(t) - 1) \
                   + 5.02808 * np.log10(T_dash(t)) \
                   - 1.3816e-7 * (np.power(10, 11.344  * (1 - 1 / T_dash(t))) - 1) \
-                  + 8.1328e-3 * (np.power(10, -3.4919 * (T_dash(t)- 1)) - 1) \
+                  + 8.1328e-3 * (np.power(10, -3.4919 * (T_dash(t) - 1)) - 1) \
                   + np.log10(1013.246)
 
 f_from_x = lambda x: (x / 1000 * 101325) / (x / 1000 + 0.622)
